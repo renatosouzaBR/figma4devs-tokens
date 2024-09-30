@@ -35,3 +35,5 @@ jobs:
           message: "style: Update design tokens"
           committer_name: GitHub Actions
           committer_email: actions@github.com
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
