@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Create input JSON
         id: create-json
@@ -29,12 +29,12 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
+      - name: Create PR 
+        uses: peter-evans/create-pull-request@v4
         with:
           commit-message: "style: Update design tokens"
           title: ${{ github.event.client_payload.commitMessage || 'Update design tokens' }}
           body: "Design tokens have been updated via Figma and need to be reviewed."
-          base: 'master'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_NAME: 'master'
