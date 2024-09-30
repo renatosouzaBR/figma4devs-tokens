@@ -29,14 +29,9 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Create PR 
-        uses: peter-evans/create-pull-request@v7
+      - name: Add and commit changes
+        uses: EndBug/add-and-commit@v9
         with:
-          commit-message: "style: Update design tokens"
-          title: ${{ github.event.client_payload.commitMessage || 'Update design tokens' }}
-          body: "Design tokens have been updated via Figma and need to be reviewed."
-          branch: update-tokens
-          delete-branch: true
-          base: 'master'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          message: "style: Update design tokens"
+          committer_name: GitHub Actions
+          committer_email: actions@github.com
